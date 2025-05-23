@@ -2,6 +2,16 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=19273276)
 
 
-Program pro zadávání úkolů
+ Správce úkolů
+Tato webová aplikace je jednoduchý správce úkolů postavený pomocí Pythonu a Flasku. Uživatelé mohou přidávat úkoly, upravovat je, označovat jako hotové a zobrazit seznam všech úkolů.
 
-Spustíte jej přes python konzoli, kliknete na ip co vám to dá. Hodí vás to na homepage, kde vpravo v horním rohu dáte úkoly. Tam zadáte název, popis, datum zadání a odevzdání. Na homepage se vám ukážou vámi zadané úkoly, kde je můžete buď upravit či označit jako hotové.
+ Funkce
+Přidání nového úkolu (název, popis, datum začátku, datum odevzdání)
+
+Zobrazení všech úkolů
+
+Úprava existujících úkolů
+
+Označení úkolu jako dokončeného
+
+Přehledné rozhraní vytvořené pomocí Bootstrapu
