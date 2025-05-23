@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Úkoly</title>
+  <!--bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Správce úkolů</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="/">Domů</a></li>
+        <li class="nav-item"><a class="nav-link" href="/ukoly">Přidat úkol</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h1>Úkoly</h1>
+
+<!-- zobrazuje úkoly-->
+  {% if tasks %}
+    {% for task in tasks %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <!--zobrazení názvu, popisu a datumu -->
+          <h5>{{ task.title }}</h5>
+          <p>{{ task.description }}</p>
+          <p><strong>Začátek:</strong> {{ task.start }} | <strong>Konec:</strong> {{ task.end }}</p>
+
+          {% if not task.done %}
+            <!-- Tlačítko pro hotovo-->
+            <a href="/done/{{ loop.index0 }}" class="btn btn-success btn-sm">Hotovo</a>
+
+            <!-- tlačítko pro úpravu úkolu-->
+            <button class="btn btn-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#edit{{ loop.index0 }}">Upravit</button>
+            <div class="collapse mt-2" id="edit{{ loop.index0 }}">
+              <form method="POST" action="/edit/{{ loop.index0 }}">
+                <input type="text" name="nazev" value="{{ task.title }}" class="form-control mb-2" required>
+                <input type="text" name="popis" value="{{ task.description }}" class="form-control mb-2">
+                <input type="date" name="start_date" value="{{ task.start }}" class="form-control mb-2">
+                <input type="date" name="end_date" value="{{ task.end }}" class="form-control mb-2">
+                <button type="submit" class="btn btn-primary btn-sm">Uložit</button>
+              </form>
+            </div>
+          {% else %}
+            <span class="badge bg-success">Dokončeno</span>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <!-- úvodní zpráva když nejsou úkoly -->
+    <p>Žádné úkoly zatím nejsou.</p>
+  {% endif %}
+</div>
+
+<!-- bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
