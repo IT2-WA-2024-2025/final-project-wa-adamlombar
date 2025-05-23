@@ -2,35 +2,59 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Přidat úkol</title>
+  <!--bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
+<!--navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Správce úkolů</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <a class="navbar-brand" href="/">Správce úkolů</a>
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Domů</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/ukoly">Přidat úkol</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="/">Domů</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/ukoly">Přidat úkol</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
+<!--hlavní stránka !-->
 <div class="container mt-5">
-  <h1 class="mb-4">Přidat nový úkol</h1>
+  <h1>Přidat nový úkol</h1>
 
+  <!--formulář-->
   <form method="POST" action="/ukoly">
+
+    <!-- název úkolu -->
     <div class="mb-3">
-      <label for="nazev" class="form-label">Název úkolu</label>
+      <label for="nazev" class="form-label">Název</label>
       <input type="text" class="form-control" id="nazev" name="nazev" required>
+    </div>
+
+    <!--popis úkolu -->
+    <div class="mb-3">
+      <label for="popis" class="form-label">Popis</label>
+      <textarea class="form-control" id="popis" name="popis"></textarea>
+    </div>
+
+    <!-- data přidání/odevzdání -->
+    <div class="mb-3">
+      <label for="start_date" class="form-label">Začátek</label>
+      <input type="date" class="form-control" id="start_date" name="start_date">
+    </div>
+    <div class="mb-3">
+      <label for="end_date" class="form-label">Konec</label>
+      <input type="date" class="form-control" id="end_date" name="end_date">
+    </div>
+
+    <!--!tlačítko pro odeslání formuláře -->
+    <button type="submit" class="btn btn-success">Přidat</button>
+  </form>
+</div>
+
+</body>
+</html>
+
